@@ -8,5 +8,5 @@ export default createSwitchNavigator({
     Register: RegisterScreen,
     Main: MainTabNavigator,
 },{
-    initialRouteName: 'Main'
+    initialRouteName: 'Login'
 });

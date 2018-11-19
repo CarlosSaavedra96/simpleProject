@@ -16,19 +16,16 @@ export default class IndexScreen extends Component {
             <View style={ styles.container }>
                 <Header title={ this.navigationOptions.title } />
                 <View style={ styles.body }>
-                    <View style={{flex:1}}>
-                        <View styles={ styles.imageContainer }>
-                            <Image
-                                source={ require('../assets/react-native-logo.png') }
-                                style={ styles.image }
-                            />
-                        </View>
-                        <View style={ styles.paragraphContainer }>
-                            <Text style={ styles.paragraph }>sew gf
-                          fdfd111iscing sd elidsdsddsdst, sed do eiusmod tempor incididunt ut ldsabore et dolore magna aliqsaua. Cursus euismod quis viverra nibh cras pulvinar mattis nunc sed.
-                            </Text>
-                        </View>
-
+                    <View styles={ styles.imageContainer }>
+                        <Image
+                            source={ require('../assets/react-native-logo.png') }
+                            style={ styles.image }
+                        />
+                    </View>
+                    <View style={ styles.paragraphContainer }>
+                        <Text style={ styles.paragraph }>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Cursus euismod quis viverra nibh cras pulvinar mattis nunc sed.
+                        </Text>
                     </View>
                 </View>
             </View>
@@ -43,7 +40,7 @@ const styles = StyleSheet.create({
     body: {
         flex: 8,
         padding: 15,
-        justifyContent: 'center',
+        alignItems: 'center'
     },
     image: {
         height: 100,
@@ -53,7 +50,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     paragraph:{
-        fontSize: 20,
+        fontSize: 18,
     },
     paragraphContainer: {
         flex: 1,
