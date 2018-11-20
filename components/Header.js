@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableHighlight, Alert } from 'react-native';
 import { Icon } from 'expo';
 
 export default class Header extends Component {
     constructor(props) {
         super(props);
+        this._handleLogout = this._handleLogout.bind(this);
     }
 
     render() {
@@ -13,20 +14,42 @@ export default class Header extends Component {
                 <View style={styles.statusBar}></View>
                 <View style={styles.container}>
                     <Text style={styles.title}>{ this.props.title }</Text>
-                    <Icon.FontAwesome
-                        name={'ellipsis-v'}
-                        size={20}
+                    <TouchableHighlight
+                        onPress={this._handleAlert}
                         style={styles.icon}
-                    />
+                    >
+                        <Icon.FontAwesome
+                            name={'ellipsis-v'}
+                            size={20}
+                            />
+                    </TouchableHighlight>
                 </View>
             </View>
         )
+    }
+
+    _handleAlert() {
+        Alert.alert('Alert', 
+            'You are going to logout',
+            [
+                {text: 'Logout', onPress:() => this._handleLogout},
+                {text: 'Cancel', style:'cancel'}
+            ],
+            {cancelable:false});
+    }
+
+    _handleLogout() {
+        this.props.logoutFetch();
+        if (!this.props.auth.loggedIn) {
+            this.props.navigation.navigate('Login');
+        }
     }
 }
 
 const styles = StyleSheet.create({
     cont: {
-        flex: 1
+        flex: 1,
+        marginBottom: 10
     },
     container: {
         backgroundColor: '#e6e6e6',
@@ -45,7 +68,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'black'
     },
     icon: {
-        flex: 1,
+        flex: 2,
+        alignItems: 'center'
     }
 });
 

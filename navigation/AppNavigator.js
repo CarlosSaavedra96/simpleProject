@@ -1,6 +1,6 @@
 import { createSwitchNavigator } from 'react-navigation';
-import LoginScreen from '../screens/LoginScreen';
-import RegisterScreen from '../screens/RegisterScreen';
+import LoginScreen from '../containers/login';
+import RegisterScreen from '../containers/register';
 import MainTabNavigator from '../navigation/MainTabNavigator';
 
 export default createSwitchNavigator({

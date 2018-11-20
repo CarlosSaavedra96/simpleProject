@@ -35,8 +35,18 @@ const authReducer = (state = fromJS(INIT_STATE), action) => {
             });
         case 'SIGNIN_SUCCESS':
             return state.merge({
+                loggedIn: true,
                 loading: false,
             });
+        case 'LOGOUT_REQUEST':
+            return state.merge({
+                ...INIT_STATE,
+                loading: true,
+            })
+        case 'LOGOUT_SUCCESS':
+            return state.merge({
+                loading:false,
+            })
         default:
             return state;
     }

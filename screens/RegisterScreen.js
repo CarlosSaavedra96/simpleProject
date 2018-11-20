@@ -18,6 +18,7 @@ export default class RegisterScreen extends Component {
         };
 
         this.signinInit = this.signinInit.bind(this);
+        this._handleSignup = this._handleSignup.bind(this);
     }
 
     signinInit() {
@@ -92,7 +93,10 @@ export default class RegisterScreen extends Component {
     }
 
     _handleSignup() {
-
+        this.props.signinFetch(this.state.username, this.state.email, this.state.password);
+        if (this.props.auth.loggedIn){
+            this.props.navigation.navigate('Index');
+        }
     }
 }
 

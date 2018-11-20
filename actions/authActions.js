@@ -1,4 +1,4 @@
-export function loginInit(email, password) {
+export function loginInit() {
     return {
         type: 'LOGIN_INIT'
     }
@@ -32,7 +32,7 @@ export function loginFetch(email, password) {
     }
 }
 
-export function signinInit(email, password) {
+export function signinInit() {
     return {
         type: 'SIGNIN_INIT'
     }
@@ -63,5 +63,24 @@ export function signinFetch(username, email, password) {
     return (dispatch) => {
         dispatch(signinRequest(username, email, password));
         return dispatch(signinSuccess({}));
+    }
+}
+
+export function logoutRequest() {
+    return {
+        type: 'LOGOUT_REQUEST'
+    }
+}
+
+export function logoutSuccess() {
+    return {
+        type: 'LOGOUT_SUCCESS'
+    }
+}
+
+export function logoutFetch() {
+    return (dispatch) => {
+        dispatch(loginRequest());
+        return dispatch(logoutSuccess());
     }
 }

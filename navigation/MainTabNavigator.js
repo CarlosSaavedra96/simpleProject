@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from 'react-navigation';
 import IndexScreen from '../screens/IndexScreen';
 import AboutScreen from '../screens/AboutScreen';
-import FormScreen from '../screens/FormScreen';
+import FormScreen from '../containers/notes';
 import MapScreen from '../screens/MapScreen';
 
 export default createBottomTabNavigator({
