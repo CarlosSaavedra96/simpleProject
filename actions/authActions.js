@@ -4,10 +4,10 @@ export function loginInit() {
     }
 }
 
-export function loginRequest(email, password) {
+export function loginRequest(username, password) {
     return {
         type: 'LOGIN_REQUEST',
-        payload: { email, password }
+        payload: { username, password }
     }
 }
 
@@ -25,10 +25,10 @@ export function loginFailure(response) {
     }
 }
 
-export function loginFetch(email, password) {
+export function loginFetch(username, password) {
     return (dispatch) => {
-        dispatch(loginRequest(email,password));
-        return dispatch(loginSuccess({username:'user'}));
+        dispatch(loginRequest(username,password));
+        return dispatch(loginSuccess({email:'email@user.com'}));
     }
 }
 
@@ -80,7 +80,7 @@ export function logoutSuccess() {
 
 export function logoutFetch() {
     return (dispatch) => {
-        dispatch(loginRequest());
+        dispatch(logoutRequest());
         return dispatch(logoutSuccess());
     }
 }

@@ -1,21 +1,30 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableHighlight, Alert } from 'react-native';
 import { Icon } from 'expo';
+import { withNavigation } from 'react-navigation';
 
-export default class Header extends Component {
+class Header extends Component {
     constructor(props) {
         super(props);
-        this._handleLogout = this._handleLogout.bind(this);
+
+        this.handleLogout = this.handleLogout.bind(this);
+        this.handleAlert = this.handleAlert.bind(this);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (!this.props.auth.loggedIn || !nextProps.auth.loggedIn) {
+            this.props.navigation.navigate('Login');
+        }
     }
 
     render() {
         return (
             <View style={styles.cont}>
-                <View style={styles.statusBar}></View>
+                <View style={styles.statusBar}/>
                 <View style={styles.container}>
                     <Text style={styles.title}>{ this.props.title }</Text>
                     <TouchableHighlight
-                        onPress={this._handleAlert}
+                        onPress={this.handleAlert}
                         style={styles.icon}
                     >
                         <Icon.FontAwesome
@@ -28,22 +37,19 @@ export default class Header extends Component {
         )
     }
 
-    _handleAlert() {
-        Alert.alert('Alert', 
-            'You are going to logout',
-            [
-                {text: 'Logout', onPress:() => this._handleLogout},
-                {text: 'Cancel', style:'cancel'}
-            ],
-            {cancelable:false});
+    handleLogout() {
+        this.props.logoutFetch();
     }
 
-    _handleLogout() {
-        this.props.logoutFetch();
-        if (!this.props.auth.loggedIn) {
-            this.props.navigation.navigate('Login');
-        }
+    handleAlert() {
+        Alert.alert('Alert',
+            'You are going to logout',
+            [
+                {text: 'Logout', onPress: this.handleLogout},
+                {text: 'Cancel', style:'cancel'}
+            ]);
     }
+
 }
 
 const styles = StyleSheet.create({
@@ -73,3 +79,4 @@ const styles = StyleSheet.create({
     }
 });
 
+export default withNavigation(Header);

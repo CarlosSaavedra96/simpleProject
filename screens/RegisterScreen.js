@@ -24,6 +24,13 @@ export default class RegisterScreen extends Component {
     signinInit() {
         this.props.signinInit();
     }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.auth.loggedIn || nextProps.auth.loggedIn){
+            this.props.navigation.navigate('Index');
+        }
+    }
+
     render() {
         return(
             <KeyboardAvoidingView style={ styles.container }>
@@ -71,7 +78,7 @@ export default class RegisterScreen extends Component {
                 <View style={ styles.buttonContainer }>
                     <TouchableOpacity
                         style={ styles.button }
-                        onPress={ this._handleSignup }
+                        onPress={ () => this.props.signinFetch(this.state.username, this.state.email, this.state.password)}
                     >
                         <Text style={ styles.buttonText }>
                             Signup
@@ -93,10 +100,7 @@ export default class RegisterScreen extends Component {
     }
 
     _handleSignup() {
-        this.props.signinFetch(this.state.username, this.state.email, this.state.password);
-        if (this.props.auth.loggedIn){
-            this.props.navigation.navigate('Index');
-        }
+
     }
 }
 

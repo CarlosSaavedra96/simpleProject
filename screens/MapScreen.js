@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import MapView from 'react-native-maps';
 import { ScreenOrientation } from 'expo';
-import Header from '../components/Header';
+import Header from '../containers/Header';
 
 export default class MapScreen extends Component {
     navigationOptions = {

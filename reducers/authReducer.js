@@ -14,13 +14,13 @@ const authReducer = (state = fromJS(INIT_STATE), action) => {
             return state.merge(INIT_STATE);
         case 'LOGIN_REQUEST':
             return state.merge({
-                email: action.payload.email,
+                username: action.payload.username,
                 password: action.payload.password,
                 loading: true,
             });
         case 'LOGIN_SUCCESS':
             return state.merge({
-                username: action.payload.response.username,
+                email: action.payload.response.email,
                 loggedIn: true,
                 loading: false,
             });
@@ -40,13 +40,13 @@ const authReducer = (state = fromJS(INIT_STATE), action) => {
             });
         case 'LOGOUT_REQUEST':
             return state.merge({
-                ...INIT_STATE,
+                    ...INIT_STATE,
                 loading: true,
-            })
+            });
         case 'LOGOUT_SUCCESS':
             return state.merge({
                 loading:false,
-            })
+            });
         default:
             return state;
     }

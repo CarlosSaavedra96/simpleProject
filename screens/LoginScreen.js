@@ -18,7 +18,6 @@ export default class LoginScreen extends Component {
         };
 
         this.loginInit = this.loginInit.bind(this);
-        this._handleLogin = this._handleLogin.bind(this);
     }
 
     loginInit() {
@@ -27,6 +26,12 @@ export default class LoginScreen extends Component {
 
     componentDidMount() {
         this.loginInit();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.auth.loggedIn || this.props.auth.loggedIn) {
+            this.props.navigation.navigate('Index');
+        }
     }
 
     render() {
@@ -62,7 +67,7 @@ export default class LoginScreen extends Component {
                 <View style={ styles.buttonContainer }>
                     <TouchableOpacity
                         style={ styles.button }
-                        onPress={ () => this._handleLogin }
+                        onPress={ () => this.props.loginFetch(this.state.username, this.state.password)}
                     >
                         <Text style={ styles.buttonText }>
                             Login
@@ -82,15 +87,6 @@ export default class LoginScreen extends Component {
             </KeyboardAvoidingView>
         );
     }
-
-    _handleLogin() {
-        this.props.loginFetch(this.state.username, this.state.password);
-        if (this.props.auth.loggedIn) {
-            this.props.navigation.navigate('Index');
-        }
-    }
-
-
 }
 
 const styles = StyleSheet.create({

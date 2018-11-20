@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
-import Header from '../components/Header';
+import Header from '../containers/Header';
 
 export default class IndexScreen extends Component {
     navigationOptions = {

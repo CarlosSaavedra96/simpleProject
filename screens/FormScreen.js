@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { View, 
-    Text, 
+import { View,
+    Text,
     StyleSheet,
     Picker,
     TextInput,
     TouchableHighlight,
     KeyboardAvoidingView
 } from 'react-native';
-import Header from '../components/Header';
+import Header from '../containers/Header';
 import CheckBox from 'react-native-check-box';
 import DatePicker from 'react-native-datepicker'
 
@@ -15,7 +15,7 @@ export default class FormScreen extends Component {
     navigationOptions = {
         title:'Form',
     };
-    
+
     constructor(props) {
         super(props);
         this.state = {
@@ -53,7 +53,7 @@ export default class FormScreen extends Component {
                         isChecked={this.state.important}
                         rightText={"Important"}
                     />
-                    <TextInput 
+                    <TextInput
                         placeholder={'Title'}
                         onChangeText={(title) => this.setState({title})}
                         style={ [styles.text, styles.textField] }
@@ -71,7 +71,6 @@ export default class FormScreen extends Component {
                         />
                     <TouchableHighlight
                         style={ styles.button }
-                        onPress={() => this._handleSubmit}
                     >
                         <Text style={ styles.text }>
                           Save
