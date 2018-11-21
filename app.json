@@ -10,7 +10,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splash-screen.jpg",
+      "image": "./assets/splash-screen.png",
       "resizeMode": "contain",
       "backgroundColor": "#E9E9E9"
     },
@@ -22,6 +22,14 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.mindlabs.simpleProject",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDP-EhSCaNzkY5z2Q9VitPK018v5ywUiRk"
+        }
+      }
     }
   }
 }
